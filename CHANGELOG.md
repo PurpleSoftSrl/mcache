@@ -1,3 +1,7 @@
+## 0.1.3
+
+- Automated publishing via GitHub Actions OIDC to pub.dev
+
 ## 0.1.2
 
 - Add GitHub Actions CI workflow (analyze + test on push/PR)
