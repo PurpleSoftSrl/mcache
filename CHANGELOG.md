@@ -1,3 +1,7 @@
+## 0.1.6
+
+- Dynamic CI/Publish/Stars badges on README
+
 ## 0.1.5
 
 - OIDC-only automated publishing to pub.dev
