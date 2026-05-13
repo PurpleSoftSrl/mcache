@@ -1,3 +1,9 @@
+## 0.1.2
+
+- Add GitHub Actions CI workflow (analyze + test on push/PR)
+- Add publish workflow (auto-publish to pub.dev on version tag)
+- Add dynamic CI badge and platform badges to README
+
 ## 0.1.1
 
 - Rename barrel file to `mcache_dart.dart` to match package name convention
