@@ -2,11 +2,12 @@
 
 > The fastest, most feature-complete in-memory cache for Dart and Flutter.
 
-[![pub.dev](https://img.shields.io/pub/v/mcache_dart?color=blue&label=pub.dev)](https://pub.dev/packages/mcache_dart)
-[![CI](https://github.com/PurpleSoftSrl/mcache_dart/actions/workflows/ci.yml/badge.svg)](https://github.com/PurpleSoftSrl/mcache_dart/actions)
-[![Dart](https://img.shields.io/badge/dart-%5E3.4.0-0175C2?logo=dart)](https://dart.dev)
-[![Platform](https://img.shields.io/badge/platform-flutter%20%7C%20dart-02569B?logo=flutter)](https://flutter.dev)
-[![license](https://img.shields.io/badge/license-AGPL%20v3%20%7C%20Commercial-blue)](LICENSE)
+[![pub.dev](https://img.shields.io/pub/v/mcache_dart?label=pub.dev&logo=dart&color=0175C2)](https://pub.dev/packages/mcache_dart)
+[![CI](https://github.com/PurpleSoftSrl/mcache_dart/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/PurpleSoftSrl/mcache_dart/actions/workflows/ci.yml)
+[![Publish](https://github.com/PurpleSoftSrl/mcache_dart/actions/workflows/publish.yml/badge.svg)](https://github.com/PurpleSoftSrl/mcache_dart/actions/workflows/publish.yml)
+[![Stars](https://img.shields.io/github/stars/PurpleSoftSrl/mcache_dart?color=yellow)](https://github.com/PurpleSoftSrl/mcache_dart/stargazers)
+[![License](https://img.shields.io/badge/license-AGPL%20v3%20%7C%20Commercial-blue)](LICENSE)
+[![tests](https://img.shields.io/badge/tests-69%20passed-brightgreen)](https://github.com/PurpleSoftSrl/mcache_dart/actions)
 
 Inspired by `Microsoft.Extensions.Caching.Memory` and optimized with patterns from Google's `quiver` LruMap and Zekfad's `LinkedList`.
 
