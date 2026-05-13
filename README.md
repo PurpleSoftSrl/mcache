@@ -1,18 +1,18 @@
-# mcache
+# mcache_dart
 
 > The fastest, most feature-complete in-memory cache for Dart and Flutter.
 
 [![pub.dev](https://img.shields.io/badge/pub.dev-mcache__dart-blue)](https://pub.dev/packages/mcache_dart)
-[![test](https://img.shields.io/badge/test-13%2F13-brightgreen)]()
+[![test](https://img.shields.io/badge/test-69%2F69-brightgreen)](https://github.com/PurpleSoftSrl/mcache_dart/actions)
 [![license](https://img.shields.io/badge/license-AGPL%20v3%20%7C%20Commercial-blue)](LICENSE)
 
 Inspired by `Microsoft.Extensions.Caching.Memory` and optimized with patterns from Google's `quiver` LruMap and Zekfad's `LinkedList`.
 
 ---
 
-## Why mcache?
+## Why mcache_dart?
 
-| | mcache | quiver | zekfad | cacherine | stash |
+| | mcache_dart | quiver | zekfad | cacherine | stash |
 |---|---|---|---|---|---|
 | HashMap + custom LRU | ✅ | ✅ | ❌ | ❌ | ❌ |
 | 1 hash lookup per GET | ✅ | ✅ | ✅ | ❌ | ✅ |
@@ -33,10 +33,10 @@ Inspired by `Microsoft.Extensions.Caching.Memory` and optimized with patterns fr
 | Cache | Avg ops/s | Features |
 |---|---|---|
 | zekfad lru | 1.67M | LRU only |
-| **mcache** | **1.48M** | **all 13 features** |
+| **mcache_dart** | **1.48M** | **all 13 features** |
 | quiver LruMap | 1.42M | LRU only |
 
-> **mcache is faster than quiver and within 13% of a zero-feature raw LRU**, while being the
+> **mcache_dart is faster than quiver and within 13% of a zero-feature raw LRU**, while being the
 > only cache with sliding expiration, change tokens, priority eviction, byte-size limits,
 > and post-eviction callbacks.
 
@@ -50,7 +50,7 @@ dart pub add mcache_dart
 
 ```yaml
 dependencies:
-  mcache: ^0.1.0
+  mcache_dart: ^0.1.1
 ```
 
 ---
@@ -265,17 +265,17 @@ dart test
 
 You can use, modify, and distribute this software freely under the terms of the
 [GNU Affero General Public License v3](LICENSE). This includes the network-use
-clause: if you modify mcache and run it as part of a network service (SaaS),
+clause: if you modify mcache_dart and run it as part of a network service (SaaS),
 you must make your modifications available to users of that service.
 
 ### Commercial License
 
 If the AGPL does not fit your business model — for example, you want to keep
-your modifications proprietary or integrate mcache into a closed-source
+your modifications proprietary or integrate mcache_dart into a closed-source
 product — a **commercial license** is available.
 
 **What you get:**
-- Full rights to use mcache in proprietary, closed-source applications
+- Full rights to use mcache_dart in proprietary, closed-source applications
 - No obligation to disclose your source code or modifications
 - No network-use copyleft restrictions
 - Priority email support

@@ -1,3 +1,8 @@
+## 0.1.1
+
+- Rename barrel file to `mcache_dart.dart` to match package name convention
+- Fix README references and import paths
+
 ## 0.1.0
 
 - Initial release
