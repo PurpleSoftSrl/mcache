@@ -1,3 +1,11 @@
+## 0.1.5
+
+- OIDC-only automated publishing to pub.dev
+
+## 0.1.4
+
+- GitHub Actions CI passing: 69/69 tests on push
+
 ## 0.1.3
 
 - Automated publishing via GitHub Actions OIDC to pub.dev
