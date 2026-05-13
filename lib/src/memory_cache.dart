@@ -60,6 +60,7 @@ class MemoryCache {
   final MemoryCacheStatistics stats = MemoryCacheStatistics();
   final HashMap<Object, MemoryCacheEntry> _map = HashMap<Object, MemoryCacheEntry>();
   final Stopwatch _stopwatch = Stopwatch();
+  final int _timeBase = DateTime.now().microsecondsSinceEpoch;
   MemoryCacheEntry? _mru;
   MemoryCacheEntry? _lru;
   int _estimatedSize = 0;
@@ -70,11 +71,13 @@ class MemoryCache {
     _stopwatch.start();
   }
 
-  int get _now => _options.clock?.call() ?? _stopwatch.elapsedMicroseconds;
+  int get _now =>
+      _options.clock?.call() ?? (_stopwatch.elapsedMicroseconds + _timeBase);
 
   int get count => _map.length;
 
   bool tryGet(Object key, void Function(dynamic value)? onValue) {
+    if (_disposed) return false;
     final entry = _map[key];
     if (entry == null) {
       stats.totalMisses++;
@@ -93,6 +96,7 @@ class MemoryCache {
   }
 
   void set(Object key, dynamic value, [MemoryCacheEntryOptions? opts]) {
+    if (_disposed) return;
     final existing = _map[key];
     if (existing != null) {
       // Fast path: same object — just promote
@@ -101,6 +105,7 @@ class MemoryCache {
         return;
       }
       // Replace existing — update in place
+      _fireCallbacks(existing, EvictionReason.replaced);
       _estimatedSize -= existing.estimatedSize;
       existing.value = value;
       existing.estimatedSize = opts?.size ?? _estimateBytes(value);
@@ -110,6 +115,8 @@ class MemoryCache {
       if (opts?.slidingExpiration != null) {
         existing.ticksForSlidingExpiration = _durationToTicks(opts!.slidingExpiration!);
       }
+      stats.currentEntryCount = _map.length;
+      stats.currentEstimatedSize = _estimatedSize;
       return;
     }
 
@@ -120,6 +127,8 @@ class MemoryCache {
       _map[key] = entry;
       _estimatedSize += entry.estimatedSize;
       _promoteEntry(entry);
+      stats.currentEntryCount = _map.length;
+      stats.currentEstimatedSize = _estimatedSize;
       return;
     }
 
@@ -158,6 +167,7 @@ class MemoryCache {
   }
 
   void remove(Object key) {
+    if (_disposed) return;
     final entry = _map[key];
     if (entry != null) _removeEntry(entry, EvictionReason.removed);
   }
@@ -169,6 +179,7 @@ class MemoryCache {
   }
 
   void clear() {
+    if (_disposed) return;
     var entry = _mru;
     while (entry != null) {
       final next = entry.next;
