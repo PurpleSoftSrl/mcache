@@ -1,4 +1,4 @@
-name: mcache
+name: mcache_dart
 description: >-
   The fastest, most feature-complete in-memory cache for Dart and Flutter.
   HashMap + custom doubly-linked LRU list. Absolute, sliding, and
@@ -7,7 +7,7 @@ description: >-
   Inspired by Microsoft.Extensions.Caching.Memory.
   Dual-licensed: AGPL v3 for open-source, commercial license available.
 version: 0.1.0
-repository: https://github.com/PurpleSoftSrl/mcache
+repository: https://github.com/PurpleSoftSrl/mcache_dart
 topics:
   - cache
   - caching

@@ -2,7 +2,7 @@
 
 > The fastest, most feature-complete in-memory cache for Dart and Flutter.
 
-[![pub.dev](https://img.shields.io/badge/pub.dev-mcache-blue)](https://pub.dev/packages/mcache)
+[![pub.dev](https://img.shields.io/badge/pub.dev-mcache__dart-blue)](https://pub.dev/packages/mcache_dart)
 [![test](https://img.shields.io/badge/test-13%2F13-brightgreen)]()
 [![license](https://img.shields.io/badge/license-AGPL%20v3%20%7C%20Commercial-blue)](LICENSE)
 
@@ -45,7 +45,7 @@ Inspired by `Microsoft.Extensions.Caching.Memory` and optimized with patterns fr
 ## Install
 
 ```bash
-dart pub add mcache
+dart pub add mcache_dart
 ```
 
 ```yaml
@@ -58,7 +58,7 @@ dependencies:
 ## Quick start
 
 ```dart
-import 'package:mcache/mcache.dart';
+import 'package:mcache_dart/mcache.dart';
 
 final cache = MemoryCache(MemoryCacheOptions(sizeLimit: 50 * 1024 * 1024));
 

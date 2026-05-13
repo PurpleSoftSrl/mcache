@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:mcache/mcache.dart';
+import 'package:mcache_dart/mcache.dart';
 import 'package:test/test.dart';
 
 void main() {

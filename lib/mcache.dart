@@ -1,4 +1,4 @@
-library mcache;
+library mcache_dart;
 
 export 'src/cache_types.dart';
 export 'src/cache_extensions.dart';
