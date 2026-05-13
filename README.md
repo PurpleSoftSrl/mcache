@@ -58,7 +58,7 @@ dependencies:
 ## Quick start
 
 ```dart
-import 'package:mcache_dart/mcache.dart';
+import 'package:mcache_dart/mcache_dart.dart';
 
 final cache = MemoryCache(MemoryCacheOptions(sizeLimit: 50 * 1024 * 1024));
 
