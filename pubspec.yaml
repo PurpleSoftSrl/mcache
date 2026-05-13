@@ -6,7 +6,7 @@ description: >-
   Anti-stampede GetOrCreate. Post-eviction callbacks. Fully synchronous.
   Inspired by Microsoft.Extensions.Caching.Memory.
   Dual-licensed: AGPL v3 for open-source, commercial license available.
-version: 0.1.7
+version: 0.1.8
 repository: https://github.com/PurpleSoftSrl/mcache_dart
 topics:
   - cache

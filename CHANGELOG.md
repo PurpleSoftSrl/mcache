@@ -1,3 +1,11 @@
+## 0.1.8
+
+- Fix CHANGELOG entry for OIDC automated publish compliance
+
+## 0.1.7
+
+- OIDC automated publish fix
+
 ## 0.1.6
 
 - Dynamic CI/Publish/Stars badges on README
