@@ -1,8 +1,6 @@
-
-/// Eviction priority for cache entries.
-
-/// Lower-priority entries are evicted first under memory pressure.
-/// [neverRemove] entries are only evicted by explicit removal.
+/// Eviction priority for cache entries. Lower-priority entries are evicted
+/// first under memory pressure. [neverRemove] entries are only evicted by
+/// explicit removal.
 enum CacheItemPriority {
   low,
   normal,

@@ -1,3 +1,8 @@
+## 0.1.10
+
+- Fix dangling library doc comment in cache_types.dart
+- Further shorten pubspec description to meet pub.dev 180-char limit
+
 ## 0.1.9
 
 - Add dartdoc documentation to all public API (20%+ coverage)
