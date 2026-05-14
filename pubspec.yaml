@@ -1,12 +1,9 @@
 name: mcache_dart
 description: >-
-  The fastest, most feature-complete in-memory cache for Dart and Flutter.
-  HashMap + custom doubly-linked LRU list. Absolute, sliding, and
-  change-token expiration. Priority eviction with byte-size limits.
-  Anti-stampede GetOrCreate. Post-eviction callbacks. Fully synchronous.
-  Inspired by Microsoft.Extensions.Caching.Memory.
-  Dual-licensed: AGPL v3 for open-source, commercial license available.
-version: 0.1.8
+  High-performance in-memory cache for Dart. LRU eviction,
+  absolute/sliding/change-token expiration, priority eviction,
+  byte-size limits, anti-stampede GetOrCreate, post-eviction callbacks.
+version: 0.1.9
 repository: https://github.com/PurpleSoftSrl/mcache_dart
 topics:
   - cache

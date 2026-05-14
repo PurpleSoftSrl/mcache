@@ -53,7 +53,7 @@ dart pub add mcache_dart
 
 ```yaml
 dependencies:
-  mcache_dart: ^0.1.8
+  mcache_dart: ^0.1.9
 ```
 
 ---

@@ -1,3 +1,9 @@
+## 0.1.9
+
+- Add dartdoc documentation to all public API (20%+ coverage)
+- Shorten pubspec description for pub.dev scoring
+- Add example/ directory with usage sample
+
 ## 0.1.8
 
 - Fix CHANGELOG entry for OIDC automated publish compliance

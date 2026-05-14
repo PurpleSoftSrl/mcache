@@ -1,0 +1,13 @@
+name: example
+description: Example usage of mcache_dart
+publish_to: none
+
+environment:
+  sdk: ^3.4.0
+
+dependencies:
+  mcache_dart:
+    path: ..
+
+dev_dependencies:
+  lints: ^4.0.0

@@ -1,6 +1,8 @@
 import 'dart:collection';
 import 'cache_types.dart';
 
+/// A concrete cache entry stored in [MemoryCache].
+
 class MemoryCacheEntry {
   final Object key;
   dynamic value;
@@ -34,6 +36,8 @@ class MemoryCacheEntry {
   List<PostEvictionCallbackRegistration> get postEvictionCallbacks => _postEvictionCallbacks ??= [];
 }
 
+/// Cache usage statistics.
+
 class MemoryCacheStatistics {
   int totalHits = 0;
   int totalMisses = 0;
@@ -41,8 +45,13 @@ class MemoryCacheStatistics {
   int currentEstimatedSize = 0;
 }
 
+/// A clock function returning monotonic ticks (usually microseconds).
+
 typedef CacheClock = int Function();
 
+/// Options for [MemoryCache].
+
+/// Configures byte-size limits and compaction behaviour.
 class MemoryCacheOptions {
   final int? sizeLimit;
   final double compactionPercentage;
@@ -55,6 +64,20 @@ class MemoryCacheOptions {
   });
 }
 
+/// A high-performance, concurrency-safe in-memory cache.
+
+/// Uses a [HashMap] and custom doubly-linked LRU list for O(1) lookup,
+/// insert, promote, and evict operations. Supports absolute, sliding,
+/// and change-token expiration, priority-based eviction, byte-size
+/// limits with compaction, post-eviction callbacks, and lazy expiration
+/// (no background timer).
+///
+/// ```dart
+/// final cache = MemoryCache();
+/// cache.set('key', 'value', MemoryCacheEntryOptions()
+///   ..absoluteExpirationRelativeToNow = Duration(minutes: 5));
+/// final value = cache.get('key');
+/// ```
 class MemoryCache {
   final MemoryCacheOptions _options;
   final MemoryCacheStatistics stats = MemoryCacheStatistics();
@@ -74,8 +97,13 @@ class MemoryCache {
   int get _now =>
       _options.clock?.call() ?? (_stopwatch.elapsedMicroseconds + _timeBase);
 
+  /// The number of entries currently in the cache.
   int get count => _map.length;
 
+  /// Tries to get a value from the cache.
+
+  /// Returns `true` if the entry exists and is not expired. The value is
+  /// passed to [onValue] on hit. On miss or expiration, returns `false`.
   bool tryGet(Object key, void Function(dynamic value)? onValue) {
     if (_disposed) return false;
     final entry = _map[key];
@@ -95,6 +123,10 @@ class MemoryCache {
     return true;
   }
 
+  /// Stores a value in the cache.
+
+  /// If [key] already exists, the entry is updated in place.
+  /// [opts] can specify expiration, priority, size, and callbacks.
   void set(Object key, dynamic value, [MemoryCacheEntryOptions? opts]) {
     if (_disposed) return;
     final existing = _map[key];
@@ -160,11 +192,15 @@ class MemoryCache {
     stats.currentEstimatedSize = _estimatedSize;
   }
 
+  /// Gets a value from the cache. Returns `null` on miss or expiration.
+
   dynamic get(Object key) {
     dynamic result;
     tryGet(key, (v) => result = v);
     return result;
   }
+
+  /// Removes the entry with the given [key], firing post-eviction callbacks.
 
   void remove(Object key) {
     if (_disposed) return;
@@ -172,11 +208,15 @@ class MemoryCache {
     if (entry != null) _removeEntry(entry, EvictionReason.removed);
   }
 
+  /// Compacts the cache to [percentage] below the size limit.
+
   void compact(double percentage) {
     final sizeLimit = _options.sizeLimit;
     if (sizeLimit == null) return;
     _compactToSize((sizeLimit * (1.0 - percentage)).toInt());
   }
+
+  /// Removes all entries from the cache and fires post-eviction callbacks.
 
   void clear() {
     if (_disposed) return;
@@ -192,6 +232,8 @@ class MemoryCache {
     stats.currentEntryCount = 0;
     stats.currentEstimatedSize = 0;
   }
+
+  /// Disposes the cache, clearing all entries and stopping the internal clock.
 
   void dispose() {
     if (_disposed) return;

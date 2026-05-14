@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'cache_types.dart';
 
+/// An [IChangeToken] that is manually triggered via [cancel].
+
 class CancellationChangeToken implements IChangeToken {
   final Completer<void> _completer = Completer<void>();
   bool _changed = false;
@@ -11,6 +13,7 @@ class CancellationChangeToken implements IChangeToken {
   @override
   bool get activeChangeCallbacks => !_completer.isCompleted;
 
+  /// Signals the token, invoking all registered callbacks.
   void cancel() {
     if (_changed) return;
     _changed = true;
@@ -26,6 +29,9 @@ class CancellationChangeToken implements IChangeToken {
   }
 }
 
+/// An [IChangeToken] that polls a predicate periodically.
+
+/// Fires when [_checker] returns `true`. Polls at [pollInterval] (default 30s).
 class CallbackChangeToken implements IChangeToken {
   final bool Function() _checker;
   Timer? _timer;
@@ -73,6 +79,8 @@ class CallbackChangeToken implements IChangeToken {
     _callbacks.clear();
   }
 }
+
+/// An [IChangeToken] that fires when any of its child tokens fire.
 
 class CompositeChangeToken implements IChangeToken {
   final List<IChangeToken> _tokens;
